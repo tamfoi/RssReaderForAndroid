@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     var asyncRssLoader : AsyncRssLoader? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Realm.init(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
