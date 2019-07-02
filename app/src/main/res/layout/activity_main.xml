@@ -19,12 +19,12 @@
     </android.support.design.widget.AppBarLayout>
 
     <Spinner
-            android:id="@+id/rssUrlSppiner"
+            android:id="@+id/rssUrlSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:paddingTop="10dp" android:paddingBottom="10dp"/>
 
     <ListView
-            android:id="@+id/itemListView"
+            android:id="@+id/articleListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

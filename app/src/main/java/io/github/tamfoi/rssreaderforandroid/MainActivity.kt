@@ -11,6 +11,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SimpleAdapter
+import io.realm.Realm
+import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,37 +23,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+    }
 
-        val spinnerItem = listOf(
-            "https://tamfoi.hatenablog.com/rss?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "https://tamfoi.hatenablog.com/rss?bbb",
-            "https://tamfoi.hatenablog.com/rss?cccccc"
-        )
+    override fun onResume(){
+        super.onResume()
 
-        val spinnerAdapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            spinnerItem
-        )
-
-        rssUrlSppiner.adapter = spinnerAdapter
-
-        rssUrlSppiner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-
-            //　アイテムが選択された時
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                loadRss()
-            }
-
-            //　アイテムが選択されなかった
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-        }
-
-
-
+        createRssUrlSpinner()
         loadRss()
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -72,33 +50,72 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun loadRss() {
+    private fun createRssUrlSpinner() {
+
+        val realmInstance = Realm.getDefaultInstance()
+
+        val rssUrlRealmResults = realmInstance.where(RssUrl::class.java).findAll().sort("id", Sort.DESCENDING)
+
+        val rssUrlRawList = realmInstance.copyFromRealm(rssUrlRealmResults)
+
+        val rssUrlList = mutableListOf<String>()
+
+        for (rssUrlRawItem in rssUrlRawList){
+            rssUrlList.add(rssUrlRawItem.url)
+        }
+
+        val spinnerAdapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            rssUrlList
+        )
+
+        rssUrlSpinner.adapter = spinnerAdapter
+
+        rssUrlSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+            //　アイテムが選択された時
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                loadRss()
+            }
+
+            //　アイテムが選択されなかった
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+        }
+
+        realmInstance.close()
+    }
+
+    private fun loadRss() {
 
         if(this.asyncRssLoader != null){
             this.asyncRssLoader!!.cancel(true)
         }
 
-        this.asyncRssLoader = AsyncRssLoader()
+        if(rssUrlSpinner.selectedItem != null){
+            this.asyncRssLoader = AsyncRssLoader()
 
-        this.asyncRssLoader!!.url = rssUrlSppiner.selectedItem.toString()
-        this.asyncRssLoader!!.onSuccess = {
-            val adapter = SimpleAdapter(
-                this,
-                this.asyncRssLoader!!.result,
-                android.R.layout.simple_list_item_2,
-                arrayOf("title", "link"),
-                intArrayOf(android.R.id.text1, android.R.id.text2)
-            )
+            this.asyncRssLoader!!.url = rssUrlSpinner.selectedItem.toString()
+            this.asyncRssLoader!!.onSuccess = {
+                val adapter = SimpleAdapter(
+                    this,
+                    this.asyncRssLoader!!.result,
+                    android.R.layout.simple_list_item_2,
+                    arrayOf("title", "link"),
+                    intArrayOf(android.R.id.text1, android.R.id.text2)
+                )
 
-            itemListView.adapter = adapter
+                articleListView.adapter = adapter
 
-            itemListView.setOnItemClickListener {parent, view, position, id ->
-                val uri = Uri.parse(this.asyncRssLoader!!.result[position]["link"])
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
+                articleListView.setOnItemClickListener {parent, view, position, id ->
+                    val uri = Uri.parse(this.asyncRssLoader!!.result[position]["link"])
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                }
             }
+            this.asyncRssLoader!!.execute()
         }
-        this.asyncRssLoader!!.execute()
 
     }
 }

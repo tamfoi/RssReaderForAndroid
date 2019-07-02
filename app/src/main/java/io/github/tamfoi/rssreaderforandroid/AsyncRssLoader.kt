@@ -16,10 +16,14 @@ class AsyncRssLoader: AsyncTask<Void, Void, String>() {
 
     override fun doInBackground(vararg p0: Void?): String? {
         if(this.url != null){
-            val client = OkHttpClient()
-            val request = Request.Builder().url(this.url).get().build()
-            val response = client.newCall(request).execute()
-            return response.body()!!.string()
+            try {
+                val client = OkHttpClient()
+                val request = Request.Builder().url(this.url).get().build()
+                val response = client.newCall(request).execute()
+                return response.body()!!.string()
+            } catch (e: Exception) {
+                return null
+            }
         } else {
             return null
         }
