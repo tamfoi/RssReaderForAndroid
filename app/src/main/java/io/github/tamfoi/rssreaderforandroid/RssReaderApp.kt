@@ -7,7 +7,5 @@ import io.realm.Realm
 class RssReaderApp: Application() {
     override fun onCreate() {
         super.onCreate()
-        Log.d("My", "init")
-        //Realm.init(this)
     }
 }
