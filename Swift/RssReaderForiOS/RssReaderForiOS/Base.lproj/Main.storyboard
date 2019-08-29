@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6gj-zk-5jI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RssReaderForiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w5q-yv-Oac">
+                                <rect key="frame" x="0.0" y="164" width="375" height="503"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="articleCell" textLabel="2FP-Ww-r1U" detailTextLabel="hmj-rb-f9r" style="IBUITableViewCellStyleSubtitle" id="GnE-3Z-C8u">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GnE-3Z-C8u" id="t9Y-aE-1ZK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2FP-Ww-r1U">
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hmj-rb-f9r">
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vM7-xZ-VfF">
+                                <rect key="frame" x="0.0" y="64" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="6tz-pq-Rj8"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vM7-xZ-VfF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Bac-qd-whb"/>
+                            <constraint firstItem="w5q-yv-Oac" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OGU-SS-Vjw"/>
+                            <constraint firstItem="vM7-xZ-VfF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VBx-s3-X0s"/>
+                            <constraint firstItem="vM7-xZ-VfF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zug-MA-UEo"/>
+                            <constraint firstItem="w5q-yv-Oac" firstAttribute="top" secondItem="vM7-xZ-VfF" secondAttribute="bottom" id="o8f-14-YAG"/>
+                            <constraint firstItem="w5q-yv-Oac" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uzf-Eq-i8x"/>
+                            <constraint firstItem="w5q-yv-Oac" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="y5g-Qe-U1F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NFi-AM-1cm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fde-ST-HPL">
+                            <connections>
+                                <segue destination="SAd-ei-3kj" kind="show" id="WvA-nm-4vd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="articleTableView" destination="w5q-yv-Oac" id="Bfz-ad-Za1"/>
+                        <outlet property="rssUrlPickerView" destination="vM7-xZ-VfF" id="gXU-eD-Qas"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072.8" y="133.5832083958021"/>
+        </scene>
+        <!--Add Rss Url View Controller-->
+        <scene sceneID="heU-fm-gLr">
+            <objects>
+                <viewController id="SAd-ei-3kj" customClass="AddRssUrlViewController" customModule="RssReaderForiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tWn-wP-RP6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="追加するRSSのURLを入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ZK-OO-5fd">
+                                <rect key="frame" x="10" y="74" width="355" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPA-wc-Aqx">
+                                <rect key="frame" x="10" y="114" width="355" height="30"/>
+                                <state key="normal" title="追加する"/>
+                                <connections>
+                                    <action selector="addRssUrl:" destination="SAd-ei-3kj" eventType="touchUpInside" id="2io-3B-1mB"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-6O-aAS">
+                                <rect key="frame" x="0.0" y="154" width="375" height="513"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rssUrlCell" textLabel="ZUQ-So-GLf" style="IBUITableViewCellStyleDefault" id="2ls-09-Usc">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ls-09-Usc" id="xaO-SA-dZd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZUQ-So-GLf">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ndv-cl-WHP" firstAttribute="trailing" secondItem="2ZK-OO-5fd" secondAttribute="trailing" constant="10" id="94p-Ua-bwY"/>
+                            <constraint firstItem="ndv-cl-WHP" firstAttribute="trailing" secondItem="RhM-6O-aAS" secondAttribute="trailing" id="dxn-jA-wWy"/>
+                            <constraint firstItem="uPA-wc-Aqx" firstAttribute="leading" secondItem="ndv-cl-WHP" secondAttribute="leading" constant="10" id="gW4-we-ca6"/>
+                            <constraint firstItem="RhM-6O-aAS" firstAttribute="top" secondItem="uPA-wc-Aqx" secondAttribute="bottom" constant="10" id="mT8-k0-Mb4"/>
+                            <constraint firstItem="ndv-cl-WHP" firstAttribute="bottom" secondItem="RhM-6O-aAS" secondAttribute="bottom" id="nSa-te-QJk"/>
+                            <constraint firstItem="RhM-6O-aAS" firstAttribute="leading" secondItem="ndv-cl-WHP" secondAttribute="leading" id="nZ3-Bg-s25"/>
+                            <constraint firstItem="uPA-wc-Aqx" firstAttribute="top" secondItem="2ZK-OO-5fd" secondAttribute="bottom" constant="10" id="p6n-pS-nGE"/>
+                            <constraint firstItem="ndv-cl-WHP" firstAttribute="trailing" secondItem="uPA-wc-Aqx" secondAttribute="trailing" constant="10" id="rdZ-jQ-Wgu"/>
+                            <constraint firstItem="2ZK-OO-5fd" firstAttribute="top" secondItem="ndv-cl-WHP" secondAttribute="top" constant="10" id="sMj-rM-NFC"/>
+                            <constraint firstItem="2ZK-OO-5fd" firstAttribute="leading" secondItem="ndv-cl-WHP" secondAttribute="leading" constant="10" id="tl7-iv-JbW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ndv-cl-WHP"/>
+                    </view>
+                    <connections>
+                        <outlet property="addRssUrlTextField" destination="2ZK-OO-5fd" id="a0E-a0-6Vu"/>
+                        <outlet property="rssUrlTableView" destination="RhM-6O-aAS" id="Tpf-0t-W6x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eZw-Hh-Z6z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1836" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WKu-xK-v7x">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6gj-zk-5jI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="57s-F8-PX9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9hQ-g1-UyR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9w-7O-ii7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="-564.46776611694156"/>
+        </scene>
+    </scenes>
+</document>
